@@ -18,4 +18,6 @@ router.get('/message/:msgParam', function (req, res, next) {
     res.render('node', {message: req.params.msgParam});
 });
 
+var User = require('../models/user');
+
 module.exports = router;
