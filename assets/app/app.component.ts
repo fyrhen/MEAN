@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'; 
+import { Message } from './messages/message.model';
 
 @Component({
     selector: 'my-app',
@@ -19,8 +20,6 @@ import { Component } from '@angular/core';
     `]
 })
 export class AppComponent {
-    message = {
-        content: 'Tô ficano fera no assunto',
-        author: 'Vinicius'
-    };
+    messageBinding: Message = new Message("Texto da Mensagem", "ViniciusRosalen");
+    messageBindingAlias: Message = new Message("Texto da Mensagem Alias", "ViniciusRosalenAlias");
 }

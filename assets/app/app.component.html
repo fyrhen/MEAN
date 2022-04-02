@@ -1,22 +1,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <input type="text" [(ngModel)]="message.content">
-            <input type="text" [(ngModel)]="message.author">
-            <article class="panel panel-default">
-                <div class="panel-body">
-                    {{ message.content }}
-                </div>
-                <footer class="panel-footer">
-                    <div class="author">
-                        {{ message.author }}
-                    </div>
-                    <div class="config">
-                        <a href="#">Edit</a>
-                        <a href="#">Delete</a>
-                    </div>
-                </footer>
-            </article>
+            <app-message    [messageVarClasse]="messageBinding"
+                            (editClicked_MessageMetodoClasse)="messageBinding.content = $event">
+            </app-message>
+            <app-message [InputMessage]="messageBindingAlias"
+                         (outputMessage)="messageBindingAlias.content = $event">
+            </app-message>
         </div>
     </div>
 </div>
