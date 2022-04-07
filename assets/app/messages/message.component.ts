@@ -23,7 +23,11 @@ import { Message } from './message.model';
 })
 export class MessageComponent {
 
-    @Input() messageVarClasse : Message = new Message ("","");
-    @Input('InputMessage') messageVarClasseAlias : Message = new Message ("","");
-
+    @Output() editClicked_MessageMetodoClasse = new EventEmitter<string>();
+    @Output('outputMessage') editClicked_MessageMetodoClasseAlias = new EventEmitter<string>();
+    
+    onEdit(){
+        this.editClicked_MessageMetodoClasse.emit("Texto veio de message (child) para o app (pai)");
+        this.editClicked_MessageMetodoClasseAlias.emit("Texto veio de message (child) para o app (pai) - Alias");
+    }
 }
