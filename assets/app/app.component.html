@@ -1,12 +1,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <app-message    [messageVarClasse]="messageBinding"
-                            (editClicked_MessageMetodoClasse)="messageBinding.content = $event">
-            </app-message>
-            <app-message [InputMessage]="messageBindingAlias"
-                         (outputMessage)="messageBindingAlias.content = $event">
-            </app-message>
+            <app-message [messageVarClasse]="messageBinding"></app-message>
+            <app-message [InputMessage]="messageBindingAlias"></app-message>
         </div>
     </div>
 </div>
