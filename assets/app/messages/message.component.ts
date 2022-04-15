@@ -1,6 +1,5 @@
 import { Input, Output } from "@angular/core";
-import { Component } from "@angular/core";
-import { EventEmitter } from "events";
+import { Component, EventEmitter } from "@angular/core";
 import { Message } from './message.model';
 
 @Component({
@@ -23,10 +22,20 @@ import { Message } from './message.model';
 })
 export class MessageComponent {
 
+    color = 'yellow';
+    tam = 12;
+    onMudaStyle() {
+        this.color = 'red';
+        this.tam = 16;
+    }
+
+    @Input() messageVarClasse : Message = new Message("","");
+    @Input('inputMessage') messageVarClasseAlias : Message = new Message("","");
+
     @Output() editClicked_MessageMetodoClasse = new EventEmitter<string>();
     @Output('outputMessage') editClicked_MessageMetodoClasseAlias = new EventEmitter<string>();
-    
-    onEdit(){
+
+    onEdit() {
         this.editClicked_MessageMetodoClasse.emit("Texto veio de message (child) para o app (pai)");
         this.editClicked_MessageMetodoClasseAlias.emit("Texto veio de message (child) para o app (pai) - Alias");
     }

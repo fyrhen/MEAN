@@ -1,12 +1,19 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <app-message [messageVarClasse]="messageBinding"
-                         (editClicked_MessageMetodoClasse)="messageBinding.content = $event">
-            </app-message>
-            <app-message [InputMessage]="messageBindingAlias"
-                         (outputMessage="messageBindingAlias.content = $event")>
-            </app-message>
-        </div>
+        <strong class="col-md-8 col-md-offset-2">== Após Reestruturação ==</strong>
+            <app-message-list></app-message-list>
+        
     </div>
 </div>
+<button (click)="onMudaMostrarElemento()">Click aqui Div</button>
+{{mostrarElemento}}
+<div *ngIf="mostrarElemento">
+    <p>Cadê a div que esta aqui com um monte de elementos</p>
+    <select id="cboCidades">
+        <option value=""></option>
+        <option value="vix">Vitória</option>
+        <option value="vv">Vila Velha</option>
+    </select>
+    <button>Click Aqui</button>
+</div>
+<br/><br/>
