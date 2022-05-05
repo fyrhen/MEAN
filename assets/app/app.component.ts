@@ -1,9 +1,11 @@
 import { Component } from '@angular/core'; 
 import { Message } from './messages/message.model';
+import { MessageService } from './messages/message.services';
 
 @Component({
     selector: 'my-app',
-    templateUrl: './app.component.html'
+    templateUrl: './app.component.html',
+    providers: [MessageService]
 })
 export class AppComponent {
     nomeNgSwitch: string = "";
