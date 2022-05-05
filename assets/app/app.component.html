@@ -1,8 +1,9 @@
 <div class="container">
     <div class="row">
         <strong class="col-md-8 col-md-offset-2">== Após Reestruturação ==</strong>
+            <app-message-input></app-message-input>
             <app-message-list></app-message-list>
-        
+        <strong class="col-md-8 col-md-offset-2">== Após Reestruturação ==</strong>
     </div>
 </div>
 <button (click)="onMudaMostrarElemento()">Click aqui Div</button>
@@ -17,3 +18,38 @@
     <button>Click Aqui</button>
 </div>
 <br/><br/>
+<button (click)="onMudaMostrarElemento()">Click aqui Novo Estudo</button>
+{{mostrarElemento}}
+<p *ngIf="mostrarElemento">
+    {{mostrarElemento ? 'p Mostrado|'+mostrarElemento : 'p Removido|+mostrarElemento'}}.
+</p>
+<br/><br/>
+<p></p>
+<button (click)="onMudaMostrarElemento()">Click aqui 'com then e else</button>
+{{mostrarElemento}}
+<p *ngIf="mostrarElemento; then thenBlockMy else elseBlockMy"></p>
+    <ng-template #thenBlockMy><p>{{mostrarElemento}} - Mostrando do Then...</p></ng-template>
+    <ng-template #elseBlockMy><p>{{mostrarElemento}} - Escondido do Else...</p></ng-template>
+<br/><br/>
+
+<p></p>
+<button (click)="valorNgSwitch=1">selecione - 1</button>
+<button (click)="valorNgSwitch=2">selecione - 2</button>
+<button (click)="valorNgSwitch=3">selecione - 3</button>
+<h5>Você selecionou : {{valorNgSwitch}}</h5>
+
+<div [ngSwitch]="valorNgSwitch">
+    <div *ngSwitchCase="1">1. Template - <b>{{valorNgSwitch}}</b> </div>
+    <div *ngSwitchCase="2">2. Template - <b>{{valorNgSwitch}}</b> </div>
+    <div *ngSwitchCase="3">3. Template - <b>{{valorNgSwitch}}</b> </div>
+    <div *ngSwitchDefault>Default Template
+</div>
+<p></p>
+<input type="text" [(ngModel)]="nomeNgSwitch">
+{{nomeNgSwitch}}
+<ul [ngSwitch]="nomeNgSwitch">
+    <li *ngSwitchCase="'Vinicius'">Bom dia Vinicius</li>
+    <li *ngSwitchCase="'Rosalen'">Boa noite Rosalen</li>
+    <li *ngSwitchCase="'da Silva'">Boa madrugada da Silva</li>
+    <li *ngSwitchDefault>Bye Bye</li>
+</ul>

@@ -3,4 +3,6 @@
         <label for="myContent">Conteudo</label>
         <input type="text" id="myContent" class="form-control" #refLocalInputmyContent>
     </div>
+    <button type="submit" class="btn btn-primary"
+            (click)="onSave(refLocalInputmyContent.value)">Save minha mensagem - ref</button>
 </div>
