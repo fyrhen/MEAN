@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { UserService } from "../user.service";
 
 @Component({
     selector: 'app-signup',
@@ -7,22 +9,33 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 })
 
 export class SignupComponent implements OnInit {
-    myForm : FormGroup;
+    
+    myForm:FormGroup = new FormGroup({
+        firstNameTS: new FormControl(null, Validators.required),
+        lastNameTS: new FormControl(null, Validators.required),
+        emailTS: new FormControl(null, [
+            Validators.required,
+            Validators.pattern("[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+")
+        ]),
+        passwordTS: new FormControl(null, Validators.required)
+    })
 
-    onSubmit() {
-        console.log(this.myForm);
-        // this.myForm.reset();
-    }
+    constructor(private _router:Router, private _userService:UserService) {}
 
     ngOnInit() {
-        this.myForm = new FormGroup({
-            firstNameTS: new FormControl(null, Validators.required),
-            lastNameTS: new FormControl(null, Validators.required),
-            emailTS: new FormControl(null, [
-                Validators.required,
-                Validators.pattern("[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+")
-            ]),
-            passwordTS: new FormControl(null, Validators.required)
-        });
+    }
+
+    register() {
+        if(!this.myForm.valid) {
+            console.log('Formulário Invalido'); return;
+        }
+
+        this._userService.register(JSON.stringify(this.myForm.value))
+        // .subscribe(
+        //     data=> {console.log(data); this._router.navigate(['/autenticacao/signin']);},
+        //     error=> console.error(error)
+            
+        // )
+        // console.log(JSON.stringify(this.myForm.value));
     }
 }
