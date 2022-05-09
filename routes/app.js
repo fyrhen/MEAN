@@ -19,21 +19,25 @@ router.get('/message/:msgParam', function (req, res, next) {
 });
 
 var User = require('../models/user');
-router.get('/node-mongodb-mongoose-user', function (req, res, next) {
-    res.render('node');    
+router.get('/register', function (req, res, next) {
+    res.render('../assets/app/auth/signup-component.html');    
 });
 
-router.post('/node-mongodb-mongoose-user', function (req, res, next) {
+router.post('/register', function (req, res, next) {
+    var firstVar = req.body.firstBody;
+    var lastVar = req.body.lastBody;
+    var passVar = req.body.passBody;
     var emailVar = req.body.emailBody;
+
     var userObject = new User({
-        firstName: 'Vinicius',
-        lastName: 'Rosalen',
-        password: "Segredo",
+        firstName: firstVar,
+        lastName: lastVar,
+        password: passVar,
         email: emailVar
     });  
     userObject.save();
     
-    res.redirect('/node-mongodb-mongoose-user');
+    res.redirect('/register');
 });
 
 router.get('/node-mongodb-mongoose-user-busca', function (req, res, next) {

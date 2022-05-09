@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{!-- <!DOCTYPE html>
 <html>
 <head>
     <meta charset='utf-8'>
@@ -22,4 +22,31 @@
     {{ emailV }} <br>
     {{ messagesV }} <br>
 </body>
-</html>
+</html> --}}
+<h1>SIGN UP</h1>
+<div class="col-md-8 col-md-offset-2">
+    <form action="/register" [formGroup]="myForm" method="post" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="firstName">Nome:</label>
+            <input type="text" id="firstName" name="firstBody" class="form-control"
+                formControlName="firstNameTS">
+        </div>
+        <div class="form-group">
+            <label for="lastName">Sobrenome:</label>
+            <input type="text" id="lastName" name="lastBody" class="form-control"
+                formControlName="lastNameTS">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="emailBody" class="form-control"
+                formControlName="emailTS">
+        </div>
+        <div class="form-group">
+            <label for="pass">Senha:</label>
+            <input type="password" id="pass" name="passBody" class="form-control"
+                formControlName="passwordTS">
+        </div>
+        <button class="btn btn-primary" type="submit"
+            [disabled]="!myForm.valid">Cadastrar</button>
+    </form>
+</div>
