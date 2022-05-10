@@ -31,7 +31,14 @@ import { HttpClientModule } from '@angular/common/http';
         SignupComponent
         
     ],
-    imports: [BrowserModule, FormsModule, myrouting, ReactiveFormsModule, HttpModule, HttpClientModule],
+    imports: [
+        BrowserModule, 
+        FormsModule, 
+        myrouting, 
+        ReactiveFormsModule, 
+        HttpModule, 
+        HttpClientModule
+    ],
     providers: [UserService],
     bootstrap: [AppComponent]
 })

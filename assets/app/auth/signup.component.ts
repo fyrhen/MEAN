@@ -11,13 +11,13 @@ import { UserService } from "../user.service";
 export class SignupComponent implements OnInit {
     
     myForm:FormGroup = new FormGroup({
-        firstNameTS: new FormControl(null, Validators.required),
-        lastNameTS: new FormControl(null, Validators.required),
-        emailTS: new FormControl(null, [
+        firstName: new FormControl(null, Validators.required),
+        lastName: new FormControl(null, Validators.required),
+        email: new FormControl(null, [
             Validators.required,
             Validators.pattern("[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+")
         ]),
-        passwordTS: new FormControl(null, Validators.required)
+        password: new FormControl(null, Validators.required)
     })
 
     constructor(private _router:Router, private _userService:UserService) {}
@@ -26,16 +26,10 @@ export class SignupComponent implements OnInit {
     }
 
     register() {
-        if(!this.myForm.valid) {
-            console.log('Formulário Invalido'); return;
-        }
-
         this._userService.register(JSON.stringify(this.myForm.value))
-        // .subscribe(
-        //     data=> {console.log(data); this._router.navigate(['/autenticacao/signin']);},
-        //     error=> console.error(error)
-            
-        // )
-        // console.log(JSON.stringify(this.myForm.value));
+        .subscribe(
+            data=> {console.log(data); this._router.navigate(['/autenticacao/signin']);},
+            error=> console.error(error)
+        )
     }
 }

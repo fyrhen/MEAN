@@ -1,18 +1,19 @@
 var express = require('express');
 var router = express.Router();
-var User = require("../models/User");
+var User = require("../models/user");
 
-router.post('/autenticacao/signup', function(req, res, next) {
+router.post('/signup', function(req, res, next) {
     addToDB(req, res);
 });
 
 async function addToDB(req, res) {
     
     var user = new User({
-        firstNameTS: req.body.firstName,
-        lastNameTS: req.body.lastName,
-        passwordTS: req.body.password,
-        emailTS: req.body.email
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        password: req.body.password,
+        email: req.body.email,
+        creation_dt: Date.now()
     });
 
     try{
