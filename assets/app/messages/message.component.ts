@@ -23,8 +23,9 @@ import { MessageService } from "./message.services";
 })
 export class MessageComponent {
 
-    color = 'yellow';
+    color = '#337ab7';
     tam = 12;
+
     onMudaStyle() {
         this.color = 'red';
         this.tam = 16;
@@ -37,7 +38,8 @@ export class MessageComponent {
     @Output('outputMessage') editClicked_MessageMetodoClasseAlias = new EventEmitter<string>();
 
     constructor(private messageServiceObj: MessageService) {}
-        onDelete() {
+
+    onDelete() {
             this.messageServiceObj.deleteMessage(this.messageVarClasse);
     }
 
