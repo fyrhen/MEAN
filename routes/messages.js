@@ -37,15 +37,18 @@ router.post('/', function (req, res, next) {
     });
 });
 
-router.delete('/mensagens/:id', function(req, res) {
-    console.log('Deleted');
-    Message.findByIdAndRemove(req.params.id, function(err, deletedMessage) {
+router.delete('/mensagens/:id', function (req, res, next) {
+    Message.findByIdAndRemove(req.body.id, function(err, result) {
         if(err) {
-            res.send("Error deleting message");
+            return res.status(500).json({
+                myErroTitle: 'Um erro aconteceu na hora de deletar a mensagem',
+                myError: err
+            });
         }
-        else {
-            res.json(deletedMessage);
-        }
+        res.status(201).json({
+            myMsgSucess: "Mensagem deletada com sucesso",
+            objMessageSave : result
+        });
     });
 });
 

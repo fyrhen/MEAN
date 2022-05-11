@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Contato = require("../models/contato");
 
-router.post('/contato', function(req, res, next) {
+router.post('/', function(req, res, next) {
     addToDB(req, res);
 });
 

@@ -9,7 +9,12 @@ import { ContatoService } from "./contato.service";
 })
 
 export class ContatoComponent implements OnInit {
-    contato:FormGroup = new FormGroup({
+
+    public isChecked = true;
+    public formaContato = 'WhatsApp';
+    public horarioContato = 'Manhã';
+
+    contatoForm:FormGroup = new FormGroup({
         nome: new FormControl(null, Validators.required),
         email: new FormControl(null, [
             Validators.required,
@@ -28,7 +33,7 @@ export class ContatoComponent implements OnInit {
     }
 
     register() {
-        this._contatoService.register(JSON.stringify(this.contato.value))
+        this._contatoService.register(JSON.stringify(this.contatoForm.value))
         .subscribe(
             data=> {console.log(data)},
             error=> console.error(error)

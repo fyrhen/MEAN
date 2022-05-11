@@ -5,7 +5,7 @@ import { AUTH_ROUTES } from "./auth/auth.routers";
 import { ContatoComponent } from "./contato/contato.component";
 
 const APP_ROUTES: Routes = [
-    { path: '', redirectTo: '/mensagens', pathMatch: 'full' },
+    { path: '', redirectTo: '/autenticacao/signup', pathMatch: 'full' },
     { path: 'mensagens', component: MessagesComponent },
     { path: 'mensagens/:id', component: MessagesComponent },
     { path: 'contato', component: ContatoComponent },
