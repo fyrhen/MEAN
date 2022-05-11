@@ -16,6 +16,8 @@ import { SignupComponent } from './auth/signup.component';
 import { HttpModule } from '@angular/http';
 import { UserService } from './user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ContatoComponent } from './contato/contato.component';
+import { ContatoService } from './contato/contato.service';
 
 @NgModule({
     declarations: [
@@ -28,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
         HeaderComponent,
         LogoutComponent,
         SigninComponent,
-        SignupComponent
+        SignupComponent,
+        ContatoComponent
         
     ],
     imports: [
@@ -39,7 +42,7 @@ import { HttpClientModule } from '@angular/common/http';
         HttpModule, 
         HttpClientModule
     ],
-    providers: [UserService],
+    providers: [UserService, ContatoService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

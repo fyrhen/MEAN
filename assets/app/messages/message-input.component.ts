@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from "@angular/forms"
 import { MessageService } from './message.services';
 import { Message } from './message.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-message-input',
@@ -10,7 +11,9 @@ import { Message } from './message.model';
 })
 
 export class MessageInputComponent {
-    constructor (private messageService: MessageService) {}
+    constructor (public messageService: MessageService, public route: ActivatedRoute) {}
+
+
 
     onSubmit(form: NgForm) {
         const messageAux = new Message(form.value.myContentngForm, 'Vini');

@@ -12,8 +12,7 @@ async function addToDB(req, res) {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         password: req.body.password,
-        email: req.body.email,
-        creation_dt: Date.now()
+        email: req.body.email
     });
 
     try{

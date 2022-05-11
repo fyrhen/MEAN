@@ -25,6 +25,7 @@ export class MessageComponent {
 
     color = '#337ab7';
     tam = 12;
+    postsService: any;
 
     onMudaStyle() {
         this.color = 'red';
@@ -37,14 +38,15 @@ export class MessageComponent {
     @Output() editClicked_MessageMetodoClasse = new EventEmitter<string>();
     @Output('outputMessage') editClicked_MessageMetodoClasseAlias = new EventEmitter<string>();
 
-    constructor(private messageServiceObj: MessageService) {}
+    constructor(public messageServiceObj: MessageService) {}
 
-    onDelete() {
-            this.messageServiceObj.deleteMessage(this.messageVarClasse);
+    onDelete(postId: string) {
+        postId = this.messageVarClasse.messageId;
+        this.messageServiceObj.deleteMessage(this.messageVarClasse, postId);
     }
 
     onEdit() {
-        this.editClicked_MessageMetodoClasse.emit("Texto veio de message (child) para o app (pai)");
+        this.editClicked_MessageMetodoClasse.emit("Texto");
         this.editClicked_MessageMetodoClasseAlias.emit("Texto veio de message (child) para o app (pai) - Alias");
     }
 }

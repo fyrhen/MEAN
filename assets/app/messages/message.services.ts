@@ -38,7 +38,15 @@ export class MessageService {
             .catch((errorRecebido: Response) => Observable.throw(errorRecebido.json()));
     }
     
-    deleteMessage(message: Message) {
+    deleteMessage(message: Message, postId: string) {
+        this.http.delete("http://localhost:3000/mensagens/"+postId)
+        .subscribe(()=> {
+            console.log("Deleted");
+        });
         this.messageSService.splice(this.messageSService.indexOf(message), 1);
+    }
+
+    updateMessage() {
+        
     }
 }

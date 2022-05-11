@@ -37,4 +37,16 @@ router.post('/', function (req, res, next) {
     });
 });
 
+router.delete('/mensagens/:id', function(req, res) {
+    console.log('Deleted');
+    Message.findByIdAndRemove(req.params.id, function(err, deletedMessage) {
+        if(err) {
+            res.send("Error deleting message");
+        }
+        else {
+            res.json(deletedMessage);
+        }
+    });
+});
+
 module.exports = router;
