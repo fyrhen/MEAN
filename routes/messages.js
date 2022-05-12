@@ -37,8 +37,9 @@ router.post('/', function (req, res, next) {
     });
 });
 
-router.delete('/mensagens/:id', function (req, res, next) {
-    Message.findByIdAndRemove(req.body.id, function(err, result) {
+router.delete('/messageDelete/:id', function (req, res) {
+    const id = req.params.id
+    Message.findByIdAndRemove(id, function(err, result) {
         if(err) {
             return res.status(500).json({
                 myErroTitle: 'Um erro aconteceu na hora de deletar a mensagem',

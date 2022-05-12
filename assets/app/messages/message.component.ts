@@ -40,9 +40,8 @@ export class MessageComponent {
 
     constructor(public messageServiceObj: MessageService) {}
 
-    onDelete(postId: string) {
-        postId = this.messageVarClasse.messageId;
-        this.messageServiceObj.deleteMessage(this.messageVarClasse, postId);
+    onDelete(messageId: string) {
+        this.messageServiceObj.deleteMessage(this.messageVarClasse, messageId);
     }
 
     onEdit() {

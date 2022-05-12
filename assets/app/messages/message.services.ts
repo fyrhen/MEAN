@@ -3,13 +3,19 @@ import { Http, Response, Headers } from "@angular/http";
 import { Message } from "./message.model";
 import 'rxjs/Rx';
 import { Observable } from "rxjs";
+import { HttpHeaders } from "@angular/common/http";
 
 @Injectable()
 export class MessageService {
     private messageSService: Message[] = [];
     
+    // const httpOptions = {
+    //     headers: new HttpHeaders({
+    //       'Content-Type':  'application/json',
+    //       Authorization: 'my-auth-token'
+    //     })
+    //   };
     constructor(private http: Http) {}
-
     addMessage(message: Message) {
         this.messageSService.push(message);
         console.log(this.messageSService);
@@ -38,12 +44,12 @@ export class MessageService {
             .catch((errorRecebido: Response) => Observable.throw(errorRecebido.json()));
     }
     
-    deleteMessage(message: Message, postId: string) {
-        this.http.delete("http://localhost:3000/mensagens/"+postId)
-        .subscribe(()=> {
-            console.log("Deleted");
+    deleteMessage(message: Message, messageId: string) {
+        const url = "http://localhost:3000/message/messageDelete/"+messageId
+        return this.http.delete(url)
+        .subscribe((res)=> {
+            this.messageSService.splice(this.messageSService.indexOf(message), 1);
         });
-        this.messageSService.splice(this.messageSService.indexOf(message), 1);
     }
 
     updateMessage() {
