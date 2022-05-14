@@ -1,13 +1,10 @@
-<article class="panel panel-default" [ngStyle]="{backgroundColor: color}"
-                                     (click)="color = 'yellow'">
+<article class="panel panel-default" [ngStyle]="{backgroundColor: color}">
     <div class="panel-body">
-        {{ messageVarClasse.content }}
-        {{ messageVarClasseAlias.content }}
+        <input type="text" style="background: transparent; border: none" [(ngModel)]="messageVarClasse.content">
     </div>
     <footer class="panel-footer">
         <div class="author">
-            {{ messageVarClasse.username }}
-            {{ messageVarClasseAlias.username }}
+            <input type="text" style="background: transparent; border: none" [(ngModel)]="messageVarClasse.username">
         </div>
         <div class="config">
             <a (click)="onEdit(messageVarClasse)">Edit</a>

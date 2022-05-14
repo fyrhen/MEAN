@@ -19,7 +19,7 @@ export class MessageService {
     addMessage(message: Message) {
         this.messageSService.push(message);
         console.log(this.messageSService);
-
+        window.location.reload();
         const bodyReq = JSON.stringify(message);
         const myHeaders = new Headers({'Content-Type': 'application/json'});
         return this.http.post('http://localhost:3000/message', bodyReq, {headers: myHeaders})

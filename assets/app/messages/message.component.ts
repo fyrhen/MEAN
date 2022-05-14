@@ -23,7 +23,7 @@ import { MessageService } from "./message.services";
 })
 export class MessageComponent {
 
-    color = '#337ab7';
+    color = 'yellow';
     tam = 12;
     postsService: any;
 
